@@ -3,20 +3,10 @@
 #include "all.h"
 //gcc main.c all.h C10.h petersen.c -o main
 int nb_color;
-int t[2];
 //getVar doit être bijective
 int getVar(int s, int c) {
   //à chaque paire (s,c) sa variable (il faut que ça marche dans l'autre sens pour pouvoir récupérer la coloration)
-  return (s-1) * nb_color + c ;
-}
-int* getColoredVertex(int varSat) {
-  //fonction inverse de gerVar permettant de récupérer la coloration
-  int s = varSat/nb_color;
-  int c = varSat - s*nb_color;
-
-  t[0] = s;
-  t[1] = c;
-  return t;
+  return s * nb_color + (c - 1) ;
 }
 int main (int argc, char* argv[]){
   int order = orderG();
